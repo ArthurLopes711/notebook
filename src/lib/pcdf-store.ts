@@ -75,11 +75,14 @@ export function useNotebooks() {
     setReady(true);
   }, []);
   const save = useCallback((fn: (l: Notebook[]) => Notebook[]) => {
-    setList((prev) => {
-      const next = fn(prev);
-      localStorage.setItem(KEY, JSON.stringify(next));
-      return next;
-    });
+    let base: Notebook[] = seed();
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) base = JSON.parse(raw);
+    } catch {}
+    const next = fn(base);
+    localStorage.setItem(KEY, JSON.stringify(next));
+    setList(next);
   }, []);
   const update = useCallback(
     (id: string, fn: (n: Notebook) => Notebook) => save((l) => l.map((n) => (n.id === id ? { ...fn(n), updated: "Atualizado agora" } : n))),
