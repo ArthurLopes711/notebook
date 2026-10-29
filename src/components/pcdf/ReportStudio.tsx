@@ -19,7 +19,7 @@ function renderLine(line: string, analyses: Analysis[], onOpen: (id: string) => 
 export function ReportStudio({ report, analyses, onChange, onGenerate, onOpen, title }: { report: string; analyses: Analysis[]; onChange: (r: string) => void; onGenerate: () => void; onOpen: (id: string) => void; title: string }) {
   const [edit, setEdit] = useState(false);
   const exp = (fmt: string) => {
-    if (!report) return toast.error("Gere ou escreva o relatório antes de exportar.");
+    if (!report) { toast.error("Gere ou escreva o relatório antes de exportar."); return; }
     toast.success(`Relatório_${title.replace(/\W+/g, "_")}.${fmt.toLowerCase()} gerado (simulação).`, { description: "Nenhum arquivo foi enviado — protótipo." });
   };
   return (
