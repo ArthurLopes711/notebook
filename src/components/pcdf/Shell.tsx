@@ -11,7 +11,7 @@ export function Logo() {
       <div className="flex h-8 w-8 items-center justify-center rounded bg-gold text-xs font-black text-primary-foreground">α</div>
       <div className="leading-tight">
         <div className="text-sm font-extrabold tracking-[0.2em] text-gold">ALFA PCDF</div>
-        <div className="text-[10px] uppercase tracking-widest text-muted-foreground">PCDFNotebook</div>
+        <div className="text-[10px] uppercase tracking-widest text-header-foreground/70">PCDFNotebook</div>
       </div>
     </Link>
   );
@@ -19,8 +19,8 @@ export function Logo() {
 
 export function UserBadge() {
   return (
-    <div className="hidden items-center gap-2 text-xs text-muted-foreground md:flex">
-      <UserCircle2 className="h-5 w-5 text-primary" />
+    <div className="hidden items-center gap-2 text-xs text-header-foreground/80 md:flex">
+      <UserCircle2 className="h-5 w-5 text-gold" />
       <span>{USER}</span>
     </div>
   );
@@ -28,7 +28,7 @@ export function UserBadge() {
 
 export function Disclaimer() {
   return (
-    <div className="flex items-center justify-center gap-2 border-t border-border bg-warning/10 px-4 py-1.5 text-[11px] font-medium text-warning">
+    <div className="flex items-center justify-center gap-2 border-t border-border bg-warning/25 px-4 py-1.5 text-[11px] font-semibold text-warning-foreground">
       <ShieldAlert className="h-3.5 w-3.5" />
       Protótipo com dados fictícios — não inserir dados reais sensíveis.
     </div>
@@ -47,6 +47,14 @@ const nav = [
 export function Sidebar() {
   return (
     <aside className="hidden w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar p-3 lg:flex">
+      <div className="mb-4 flex items-center gap-3 rounded border border-sidebar-border bg-sidebar-accent p-2.5">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">DA</div>
+        <div className="leading-tight">
+          <div className="text-sm font-bold">DANIEL</div>
+          <div className="text-[10px] text-muted-foreground">Mat.: 8123.2.4.02.000-7</div>
+          <div className="text-[10px] font-semibold uppercase text-muted-foreground">Agente de Polícia</div>
+        </div>
+      </div>
       <div className="mb-3 px-2 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">Módulos</div>
       <nav className="space-y-0.5">
         {nav.map((n) => (
@@ -87,7 +95,7 @@ export function SigiloBadge({ sigilo, large }: { sigilo: Sigilo; large?: boolean
 export function PageFrame({ header, children, sidebar = true }: { header: ReactNode; children: ReactNode; sidebar?: boolean }) {
   return (
     <div className="flex h-screen flex-col bg-background">
-      <header className="flex h-14 shrink-0 items-center gap-4 border-b border-border bg-sidebar px-4">{header}</header>
+      <header className="flex h-14 shrink-0 items-center gap-4 border-b border-border bg-header px-4 text-header-foreground">{header}</header>
       <div className="flex min-h-0 flex-1">
         {sidebar && <Sidebar />}
         <main className="min-h-0 flex-1 overflow-auto">{children}</main>

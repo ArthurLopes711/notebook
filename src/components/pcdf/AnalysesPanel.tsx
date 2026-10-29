@@ -16,7 +16,7 @@ export function AnalysesPanel({
   onOpen: (id: string) => void;
 }) {
   return (
-    <section className="flex min-h-0 flex-col border-r border-border bg-card/40">
+    <section className="m-2 mr-1 flex min-h-0 flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm">
       <PanelTitle step={2} title="Análises e Fontes" />
       <div className="grid grid-cols-2 gap-1.5 border-b border-border p-3">
         <Button size="sm" className="col-span-2" onClick={onNew}><Plus className="h-4 w-4" />Nova Análise</Button>
@@ -29,7 +29,7 @@ export function AnalysesPanel({
       <div className="min-h-0 flex-1 space-y-2 overflow-auto p-3 pt-1">
         {analyses.length === 0 && <p className="text-xs text-muted-foreground">Nenhuma análise ainda. Use "Nova Análise".</p>}
         {analyses.map((a) => (
-          <div key={a.id} className="rounded border border-border bg-card p-2.5">
+          <div key={a.id} className="rounded border border-border bg-secondary p-2.5">
             <div className="flex items-start gap-2">
               <FileText className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <div className="min-w-0 flex-1">
@@ -54,7 +54,7 @@ export function AnalysesPanel({
 
 export function PanelTitle({ step, title, extra }: { step: number; title: string; extra?: React.ReactNode }) {
   return (
-    <div className="flex h-11 shrink-0 items-center gap-2 border-b border-border px-3">
+    <div className="flex h-11 shrink-0 items-center gap-2 bg-panel-head px-3 text-panel-head-foreground">
       <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gold text-[10px] font-bold text-primary-foreground">{step}</span>
       <h2 className="text-xs font-bold uppercase tracking-widest">{title}</h2>
       <div className="ml-auto">{extra}</div>
