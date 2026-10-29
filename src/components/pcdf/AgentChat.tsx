@@ -22,7 +22,7 @@ export function AgentChat({ chat, analyses, onAsk, onOpen, thinking }: { chat: C
       <div className="min-h-0 flex-1 space-y-4 overflow-auto p-4">
         {chat.map((m) => (
           <div key={m.id} className="flex gap-3">
-            <div className={m.role === "agent" ? "flex h-7 w-7 shrink-0 items-center justify-center rounded bg-gold text-primary-foreground" : "flex h-7 w-7 shrink-0 items-center justify-center rounded bg-secondary"}>
+            <div className={m.role === "agent" ? "flex h-7 w-7 shrink-0 items-center justify-center rounded bg-gold text-warning-foreground" : "flex h-7 w-7 shrink-0 items-center justify-center rounded bg-secondary"}>
               {m.role === "agent" ? <Bot className="h-4 w-4" /> : <User className="h-4 w-4" />}
             </div>
             <div className="min-w-0 flex-1">

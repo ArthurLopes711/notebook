@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 export function Logo() {
   return (
     <Link to="/" className="flex items-center gap-2">
-      <div className="flex h-8 w-8 items-center justify-center rounded bg-gold text-xs font-black text-primary-foreground">α</div>
+      <div className="flex h-8 w-8 items-center justify-center rounded bg-gold text-xs font-black text-warning-foreground">α</div>
       <div className="leading-tight">
         <div className="text-sm font-extrabold tracking-[0.2em] text-gold">ALFA PCDF</div>
         <div className="text-[10px] uppercase tracking-widest text-header-foreground/70">PCDFNotebook</div>

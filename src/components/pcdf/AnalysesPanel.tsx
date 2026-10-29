@@ -55,7 +55,7 @@ export function AnalysesPanel({
 export function PanelTitle({ step, title, extra }: { step: number; title: string; extra?: React.ReactNode }) {
   return (
     <div className="flex h-11 shrink-0 items-center gap-2 bg-panel-head px-3 text-panel-head-foreground">
-      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gold text-[10px] font-bold text-primary-foreground">{step}</span>
+      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gold text-[10px] font-bold text-warning-foreground">{step}</span>
       <h2 className="text-xs font-bold uppercase tracking-widest">{title}</h2>
       <div className="ml-auto">{extra}</div>
     </div>
