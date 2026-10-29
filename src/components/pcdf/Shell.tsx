@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 export function Logo() {
   return (
     <Link to="/" className="flex items-center gap-2.5 transition-opacity hover:opacity-90">
-      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-gold text-xs font-black text-primary-foreground">
+      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-gold text-xs font-black text-warning-foreground">
         α
       </div>
       <div className="leading-tight">
@@ -21,7 +21,9 @@ export function Logo() {
             className="h-7 w-7 shrink-0 object-contain drop-shadow"
           />
         </div>
-        <div className="text-[10px] uppercase tracking-widest text-muted-foreground">PCDFNotebook</div>
+        <div className="text-[10px] uppercase tracking-widest text-header-foreground/70">
+          PCDFNotebook
+        </div>
       </div>
     </Link>
   );
@@ -30,10 +32,10 @@ export function Logo() {
 export function UserBadge() {
   return (
     <div
-      className="hidden items-center gap-2 text-xs text-muted-foreground md:flex"
+      className="hidden items-center gap-2 text-xs text-header-foreground/80 md:flex"
       title="Agente autenticado na infraestrutura PCDF NET"
     >
-      <UserCircle2 className="h-5 w-5 text-primary" />
+      <UserCircle2 className="h-5 w-5 text-gold" />
       <span>{USER}</span>
     </div>
   );
@@ -60,6 +62,16 @@ const nav = [
 export function Sidebar() {
   return (
     <aside className="hidden w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar p-3 lg:flex">
+      <div className="mb-4 flex items-center gap-3 rounded border border-sidebar-border bg-sidebar-accent p-2.5">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+          DA
+        </div>
+        <div className="leading-tight">
+          <div className="text-sm font-bold">DANIEL</div>
+          <div className="text-[10px] text-muted-foreground">Mat.: 8123.2.4.02.000-7</div>
+          <div className="text-[10px] font-semibold uppercase text-muted-foreground">Agente de Polícia</div>
+        </div>
+      </div>
       <div className="mb-3 px-2 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
         Módulos Alfa PCDF
       </div>
@@ -123,7 +135,7 @@ export function PageFrame({
 }) {
   return (
     <div className="flex h-screen flex-col bg-background">
-      <header className="flex h-14 shrink-0 items-center gap-4 border-b border-border bg-sidebar px-4">
+      <header className="flex h-14 shrink-0 items-center gap-4 border-b border-border bg-header px-4 text-header-foreground">
         {header}
       </header>
       <div className="flex min-h-0 flex-1">

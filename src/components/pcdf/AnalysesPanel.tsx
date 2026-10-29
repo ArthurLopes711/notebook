@@ -16,7 +16,7 @@ export function AnalysesPanel({
   onOpen: (id: string) => void;
 }) {
   return (
-    <section className="flex min-h-0 flex-col border-r border-border bg-card/40">
+    <section className="m-2 mr-1 flex min-h-0 flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm">
       <PanelTitle step={2} title="Análises e Fontes" />
       <div className="grid grid-cols-2 gap-1.5 border-b border-border p-3">
         <Button size="sm" className="col-span-2" onClick={onNew}>
@@ -61,7 +61,7 @@ export function AnalysesPanel({
                 onOpen(a.id);
               }
             }}
-            className="group block cursor-pointer rounded border border-border bg-card p-2.5 transition-colors hover:border-primary/60"
+            className="group block cursor-pointer rounded border border-border bg-secondary p-2.5 transition-colors hover:border-primary/60"
           >
             <div className="flex items-start gap-2">
               <FileText className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
@@ -115,8 +115,8 @@ export function PanelTitle({
   extra?: React.ReactNode;
 }) {
   return (
-    <div className="flex h-11 shrink-0 items-center gap-2 border-b border-border px-3">
-      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gold text-[10px] font-bold text-primary-foreground">
+    <div className="flex h-11 shrink-0 items-center gap-2 bg-panel-head px-3 text-panel-head-foreground">
+      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gold text-[10px] font-bold text-warning-foreground">
         {step}
       </span>
       <h2 className="text-xs font-bold uppercase tracking-widest">{title}</h2>

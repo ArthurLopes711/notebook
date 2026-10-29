@@ -6,7 +6,7 @@ export function chipLabel(a?: Analysis) {
   return "#" + a.title.replace(/\s*\(.*\)\s*$/, "");
 }
 
-export function RefChip({ analysis, label, onOpen }: { analysis?: Analysis; label?: string; onOpen: (id: string) => void }) {
+export function RefChip({ analysis, label, onOpen }: { analysis?: Analysis | undefined; label?: string | undefined; onOpen: (id: string) => void }) {
   if (!analysis) return null;
   return (
     <button

@@ -48,7 +48,8 @@ export function ReportStudio({
 
   const exp = (fmt: string) => {
     if (!report.trim()) {
-      return toast.error("Gere ou escreva o relatório antes de exportar.");
+      toast.error("Gere ou escreva o relatório antes de exportar.");
+      return;
     }
     try {
       const filename = `Relatorio_${title.replace(/\W+/g, "_")}.${fmt === "PDF" ? "pdf.md" : "docx.md"}`;
@@ -71,13 +72,13 @@ export function ReportStudio({
   const wordCount = report.trim() ? report.trim().split(/\s+/).length : 0;
 
   return (
-    <section className="flex min-h-0 flex-col border-l border-border bg-card/40">
+    <section className="m-2 ml-1 flex min-h-0 flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm">
       <PanelTitle
         step={4}
         title="Estúdio de Relatório"
         extra={
           wordCount > 0 ? (
-            <span className="text-[10px] text-muted-foreground">{wordCount} palavras</span>
+            <span className="text-[10px] text-panel-head-foreground/70">{wordCount} palavras</span>
           ) : undefined
         }
       />

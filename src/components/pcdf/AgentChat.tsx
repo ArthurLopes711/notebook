@@ -35,11 +35,15 @@ export function AgentChat({
   };
 
   return (
-    <section className="flex min-h-0 flex-col">
+    <section className="m-2 mx-1 flex min-h-0 flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm">
       <PanelTitle
         step={3}
         title="Agente de IA"
-        extra={<span className="text-[11px] text-muted-foreground">Central de Investigação</span>}
+        extra={
+          <span className="text-[11px] text-panel-head-foreground/70">
+            Central de Conversação e Investigação
+          </span>
+        }
       />
       <div className="min-h-0 flex-1 space-y-4 overflow-auto p-4">
         {chat.map((m) => (
@@ -47,7 +51,7 @@ export function AgentChat({
             <div
               className={
                 m.role === "agent"
-                  ? "flex h-7 w-7 shrink-0 items-center justify-center rounded bg-gold text-primary-foreground"
+                  ? "flex h-7 w-7 shrink-0 items-center justify-center rounded bg-gold text-warning-foreground"
                   : "flex h-7 w-7 shrink-0 items-center justify-center rounded bg-secondary text-foreground"
               }
             >
@@ -60,7 +64,7 @@ export function AgentChat({
               <div
                 className={
                   m.role === "agent"
-                    ? "rounded border border-border bg-card p-3 text-sm leading-relaxed"
+                    ? "rounded border border-accent bg-accent/50 p-3 text-sm leading-relaxed"
                     : "rounded bg-secondary p-3 text-sm"
                 }
               >
