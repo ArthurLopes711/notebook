@@ -81,7 +81,7 @@ function Workspace() {
           </div>
           <SigiloBadge sigilo={nb.sigilo} large />
           <span className="hidden items-center gap-1 rounded-sm border border-gold/50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-gold xl:flex"><ShieldCheck className="h-3 w-3" />PCDF NET — Infraestrutura Soberana</span>
-          <div className="ml-auto flex items-center gap-3"><UserBadge /><Button size="sm" variant="outline" onClick={() => setShare(true)}><Share2 className="h-4 w-4" />Compartilhar</Button></div>
+          <div className="ml-auto flex items-center gap-3"><UserBadge /><Button size="sm" onClick={() => setShare(true)}><Share2 className="h-4 w-4" />Compartilhar</Button></div>
         </>
       }
     >

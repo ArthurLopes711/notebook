@@ -1,1 +1,1 @@
-- [ ] Ajustar visual com base no print do sistema atual
+- [x] Ajustar visual com base no print do sistema atual
