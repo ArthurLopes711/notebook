@@ -71,22 +71,21 @@ function Workspace() {
 
   return (
     <PageFrame
-      sidebar={false}
       header={
         <>
           <Logo />
-          <Link to="/" className="text-muted-foreground hover:text-primary" aria-label="Voltar"><ArrowLeft className="h-4 w-4" /></Link>
+          <Link to="/" className="text-header-foreground/70 hover:text-gold" aria-label="Voltar"><ArrowLeft className="h-4 w-4" /></Link>
           <div className="min-w-0">
             <div className="truncate text-sm font-semibold">Notebook de Investigação: {nb.name} ({nb.numero})</div>
-            <div className="text-[11px] text-muted-foreground">{nb.tipo} · Equipe: {nb.equipe.join(", ")}</div>
+            <div className="text-[11px] text-header-foreground/70">{nb.tipo} · Equipe: {nb.equipe.join(", ")}</div>
           </div>
           <SigiloBadge sigilo={nb.sigilo} large />
-          <span className="hidden items-center gap-1 rounded-sm border border-primary/40 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary xl:flex"><ShieldCheck className="h-3 w-3" />PCDF NET — Infraestrutura Soberana</span>
-          <div className="ml-auto flex items-center gap-3"><UserBadge /><Button size="sm" variant="outline" onClick={() => setShare(true)}><Share2 className="h-4 w-4" />Compartilhar</Button></div>
+          <span className="hidden items-center gap-1 rounded-sm border border-gold/50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-gold xl:flex"><ShieldCheck className="h-3 w-3" />PCDF NET — Infraestrutura Soberana</span>
+          <div className="ml-auto flex items-center gap-3"><UserBadge /><Button size="sm" onClick={() => setShare(true)}><Share2 className="h-4 w-4" />Compartilhar</Button></div>
         </>
       }
     >
-      <div className="grid h-full grid-cols-1 lg:grid-cols-[300px_1fr_380px]">
+      <div className="grid h-full grid-cols-1 lg:grid-cols-[280px_1fr_360px]">
         <AnalysesPanel
           analyses={nb.analyses}
           onNew={() => { setPreset(null); setNewOpen(true); }}

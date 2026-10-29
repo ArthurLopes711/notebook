@@ -35,7 +35,7 @@ function Index() {
         <div className="my-5 grid gap-2 sm:grid-cols-4">
           {steps.map((s, i) => (
             <div key={s} className="flex items-center gap-2 rounded border border-border bg-card px-3 py-2 text-xs">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold text-[11px] font-bold text-primary-foreground">{i + 1}</span>
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold text-[11px] font-bold text-warning-foreground">{i + 1}</span>
               {s}
             </div>
           ))}

@@ -19,11 +19,11 @@ function renderLine(line: string, analyses: Analysis[], onOpen: (id: string) => 
 export function ReportStudio({ report, analyses, onChange, onGenerate, onOpen, title }: { report: string; analyses: Analysis[]; onChange: (r: string) => void; onGenerate: () => void; onOpen: (id: string) => void; title: string }) {
   const [edit, setEdit] = useState(false);
   const exp = (fmt: string) => {
-    if (!report) return toast.error("Gere ou escreva o relatório antes de exportar.");
+    if (!report) { toast.error("Gere ou escreva o relatório antes de exportar."); return; }
     toast.success(`Relatório_${title.replace(/\W+/g, "_")}.${fmt.toLowerCase()} gerado (simulação).`, { description: "Nenhum arquivo foi enviado — protótipo." });
   };
   return (
-    <section className="flex min-h-0 flex-col border-l border-border bg-card/40">
+    <section className="m-2 ml-1 flex min-h-0 flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm">
       <PanelTitle step={4} title="Estúdio de Relatório" />
       <div className="flex items-center gap-1 border-b border-border px-3 py-1.5">
         {[Bold, Italic, List].map((I, i) => <Button key={i} size="icon" variant="ghost" className="h-7 w-7" disabled={!edit}><I className="h-3.5 w-3.5" /></Button>)}
