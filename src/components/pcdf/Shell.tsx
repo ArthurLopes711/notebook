@@ -1,16 +1,26 @@
 import { Link } from "@tanstack/react-router";
 import { Bot, BookOpen, FileAudio, Landmark, MessageSquareText, Search, ShieldAlert, UserCircle2 } from "lucide-react";
 import type { ReactNode } from "react";
+import { toast } from "sonner";
 import type { Sigilo } from "@/lib/pcdf-store";
 import { USER } from "@/lib/pcdf-store";
 import { cn } from "@/lib/utils";
 
 export function Logo() {
   return (
-    <Link to="/" className="flex items-center gap-2">
-      <div className="flex h-8 w-8 items-center justify-center rounded bg-gold text-xs font-black text-primary-foreground">α</div>
+    <Link to="/" className="flex items-center gap-2.5 transition-opacity hover:opacity-90">
+      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-gold text-xs font-black text-primary-foreground">
+        α
+      </div>
       <div className="leading-tight">
-        <div className="text-sm font-extrabold tracking-[0.2em] text-gold">ALFA PCDF</div>
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-extrabold tracking-[0.2em] text-gold">ALFA PCDF</span>
+          <img
+            src="/pcdf-logo.png"
+            alt="Brasão da Polícia Civil do Distrito Federal"
+            className="h-7 w-7 shrink-0 object-contain drop-shadow"
+          />
+        </div>
         <div className="text-[10px] uppercase tracking-widest text-muted-foreground">PCDFNotebook</div>
       </div>
     </Link>
@@ -19,7 +29,10 @@ export function Logo() {
 
 export function UserBadge() {
   return (
-    <div className="hidden items-center gap-2 text-xs text-muted-foreground md:flex">
+    <div
+      className="hidden items-center gap-2 text-xs text-muted-foreground md:flex"
+      title="Agente autenticado na infraestrutura PCDF NET"
+    >
       <UserCircle2 className="h-5 w-5 text-primary" />
       <span>{USER}</span>
     </div>
@@ -47,11 +60,20 @@ const nav = [
 export function Sidebar() {
   return (
     <aside className="hidden w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar p-3 lg:flex">
-      <div className="mb-3 px-2 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">Módulos</div>
+      <div className="mb-3 px-2 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+        Módulos Alfa PCDF
+      </div>
       <nav className="space-y-0.5">
         {nav.map((n) => (
           <div
             key={n.label}
+            role="button"
+            tabIndex={0}
+            onClick={() => {
+              if (!n.active) {
+                toast.info(`Módulo "${n.label}" integrado à plataforma Alfa PCDF.`);
+              }
+            }}
             className={cn(
               "flex cursor-pointer items-center gap-2.5 rounded px-2.5 py-2 text-[13px] text-sidebar-foreground transition-colors hover:bg-sidebar-accent",
               n.active && "border-l-2 border-primary bg-sidebar-accent font-semibold text-sidebar-accent-foreground",
@@ -64,7 +86,7 @@ export function Sidebar() {
       </nav>
       <div className="mt-auto rounded border border-sidebar-border p-3 text-[11px] text-muted-foreground">
         <div className="font-semibold text-primary">PCDF NET</div>
-        Infraestrutura Soberana
+        Infraestrutura Soberana de Inteligência Policial
       </div>
     </aside>
   );
@@ -78,16 +100,32 @@ export function SigiloBadge({ sigilo, large }: { sigilo: Sigilo; large?: boolean
     Sigiloso: "border-destructive/60 bg-destructive/20 text-destructive",
   };
   return (
-    <span className={cn("inline-flex items-center gap-1 rounded-sm border font-bold uppercase tracking-wider", large ? "px-2 py-1 text-[11px]" : "px-1.5 py-0.5 text-[10px]", cls[sigilo])}>
+    <span
+      className={cn(
+        "inline-flex items-center gap-1 rounded-sm border font-bold uppercase tracking-wider",
+        large ? "px-2 py-1 text-[11px]" : "px-1.5 py-0.5 text-[10px]",
+        cls[sigilo],
+      )}
+    >
       {large ? `Sigilo: ${sigilo}` : sigilo}
     </span>
   );
 }
 
-export function PageFrame({ header, children, sidebar = true }: { header: ReactNode; children: ReactNode; sidebar?: boolean }) {
+export function PageFrame({
+  header,
+  children,
+  sidebar = true,
+}: {
+  header: ReactNode;
+  children: ReactNode;
+  sidebar?: boolean;
+}) {
   return (
     <div className="flex h-screen flex-col bg-background">
-      <header className="flex h-14 shrink-0 items-center gap-4 border-b border-border bg-sidebar px-4">{header}</header>
+      <header className="flex h-14 shrink-0 items-center gap-4 border-b border-border bg-sidebar px-4">
+        {header}
+      </header>
       <div className="flex min-h-0 flex-1">
         {sidebar && <Sidebar />}
         <main className="min-h-0 flex-1 overflow-auto">{children}</main>
